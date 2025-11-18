@@ -1,16 +1,123 @@
 ---
+import "./styles/global.css";
+import { getHomeContent } from "./lib/getHomeContent.js";
 
+// Hent alt indhold til forsiden
+const { hero, why, b2b, microbreaks, benefits } = await getHomeContent();
+
+const heroHeadline = hero.find((i) => i.item_type === "headline");
+const heroSubtext = hero.find((i) => i.item_type === "subtext");
+
+const whyHeadline = why.find((i) => i.item_type === "headline");
+const whyBody = why.find((i) => i.item_type === "body");
+
+const b2bHeadline = b2b?.find?.((i) => i.item_type === "headline");
+const b2bPoints = b2b?.filter?.((i) => i.item_type === "point") ?? [];
+
+const microHeadline = microbreaks?.find?.((i) => i.item_type === "headline");
+const microBody = microbreaks?.find?.((i) => i.item_type === "body");
+
+const benefitsHeadline = benefits.find((i) => i.item_type === "headline");
+const benefitPoints = benefits.filter((i) => i.item_type === "point");
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <title>SoundWheel – Musikdrevne pauser for virksomheder</title>
+    <meta
+      name="description"
+      content="SoundWheel gør det nemt for virksomheder at tilbyde korte, musikdrevne pauser, der styrker fokus og trivsel."
+    />
+  </head>
+
+  <body class="page">
+    <!-- TOPBAR -->
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div class="logo">SoundWheel</div>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="#hero">Forside</a></li>
+            <li><a href="#why">Hvorfor?</a></li>
+            <li><a href="#b2b">For virksomheder</a></li>
+            <li><a href="#benefits">Fordele</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section id="hero" class="section hero">
+        <div class="hero-text">
+          <div class="hero-tag">Musikdrevne mikropauser</div>
+          <h1>{heroHeadline?.title}</h1>
+          <p>{heroSubtext?.body}</p>
+
+          <div class="hero-actions">
+            <a href="#b2b" class="btn btn-primary">Se hvordan det virker</a>
+            <a href="#benefits" class="btn btn-secondary">Se effekten</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-circle"></div>
+        </div>
+      </section>
+
+      <!-- WHY SOUNDWHEEL -->
+      <section id="why" class="section">
+        <h2 class="section-heading">{whyHeadline?.title}</h2>
+        <p class="section-intro">{whyBody?.body}</p>
+      </section>
+
+      <!-- B2B INTRO + LØSNINGER -->
+      <section id="b2b" class="section">
+        <h2 class="section-heading">{b2bHeadline?.title}</h2>
+        <p class="section-intro">
+          SoundWheel kan bruges som en del af jeres trivselsindsats – som et
+          simpelt værktøj, der gør pauser til en naturlig del af arbejdsdagen.
+        </p>
+
+        <div class="card-grid" style="margin-top: 1.8rem;">
+          {b2bPoints.map((item) => (
+            <article class="card">
+              <div class="card-label">Løsning</div>
+              <h3 class="card-title">{item.title}</h3>
+              <p class="card-body">{item.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- MICROBREAKS -->
+      <section class="section">
+        <h2 class="section-heading">{microHeadline?.title}</h2>
+        <div class="highlight-box">
+          <p class="small-label">Mikropauser på 5–10 minutter</p>
+          <p>{microBody?.body}</p>
+        </div>
+      </section>
+
+      <!-- FORDELE -->
+      <section id="benefits" class="section">
+        <h2 class="section-heading">{benefitsHeadline?.title ?? "Fordele"}</h2>
+
+        <div class="card-grid" style="margin-top: 1.4rem;">
+          {benefitPoints.map((b) => (
+            <article class="card">
+              <h3 class="card-title">{b.title}</h3>
+              <p class="card-body">{b.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>SoundWheel · Musikdrevne pauser for moderne virksomheder</p>
+    </footer>
+  </body>
 </html>

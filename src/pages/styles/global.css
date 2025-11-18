@@ -1,0 +1,293 @@
+/* ---------- Basis ---------- */
+
+:root {
+  --color-bg: #f5f3f3;
+  --color-bg-alt: #cec4c3;
+  --color-primary: #3d1112;
+  --color-accent: #c6d5d7;
+  --color-muted: #c5bcaa;
+  --color-text: #2b1b1b;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body.page {
+  font-family: "Helvetica Neue", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* ---------- Layout ---------- */
+
+.site-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background: #ffffffcc;
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.site-header-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: "Inria Serif", "Times New Roman", serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  font-size: 0.95rem;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--color-text);
+  opacity: 0.8;
+}
+
+.main-nav a:hover {
+  opacity: 1;
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+/* ---------- Sektioner ---------- */
+
+.section {
+  margin-bottom: 3.5rem;
+}
+
+.section-heading {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+}
+
+.section-intro {
+  max-width: 640px;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  padding: 3.5rem 0 3rem;
+}
+
+.hero-text h1 {
+  font-size: 2.4rem;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+}
+
+.hero-text p {
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+}
+
+.hero-tag {
+  display: inline-block;
+  background: var(--color-muted);
+  color: var(--color-primary);
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.75rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.hero-visual {
+  flex: 0 0 260px;
+  height: 220px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 20%, #ffffff, #c6d5d7);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-circle {
+  position: absolute;
+  inset: 16px;
+  border-radius: 50%;
+  border: 14px solid rgba(61, 17, 18, 0.1);
+}
+
+.hero-circle::before {
+  content: "";
+  position: absolute;
+  inset: 26px;
+  border-radius: 50%;
+  border: 12px solid rgba(61, 17, 18, 0.18);
+}
+
+.hero-circle::after {
+  content: "";
+  position: absolute;
+  inset: 52px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  opacity: 0.8;
+}
+
+/* ---------- Buttons ---------- */
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.btn {
+  border-radius: 999px;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease,
+    color 0.12s ease;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(61, 17, 18, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(61, 17, 18, 0.32);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-secondary:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* ---------- Kort / cards ---------- */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.2rem;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 1.2rem 1.3rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.card-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-primary);
+  opacity: 0.7;
+  margin-bottom: 0.35rem;
+}
+
+.card-title {
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.card-body {
+  font-size: 0.95rem;
+}
+
+/* ---------- Mikro pauser & CTA ---------- */
+
+.highlight-box {
+  background: var(--color-bg-alt);
+  border-radius: 22px;
+  padding: 1.4rem 1.6rem;
+  margin-top: 1rem;
+  max-width: 640px;
+}
+
+.highlight-box h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.small-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 0.4rem;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1.5rem 2rem;
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* ---------- Responsiv ---------- */
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .hero-visual {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .main-nav {
+    display: none; /* keep it simple til eksamen */
+  }
+}
